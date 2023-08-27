@@ -1,0 +1,27 @@
+{
+  "name": "exemplar-recruiter-server",
+  "version": "1.0.0",
+  "description": "Welcome to the Server Directory of Exemplar Recruiter – Your Gateway to Talent Acquisition Excellence! At Exemplar Recruiter, we take pride in our dedicated server infrastructure that powers our seamless recruitment operations. This directory encapsulates the backend magic that fuels our recruitment processes, ensuring a streamlined experience for both clients and candidates. Our server directory is a testament to our commitment to innovation, security, and efficiency in the recruitment landscape. It's the heart of our technology-driven approach, providing the backbone for data management, communication, and matchmaking between talented individuals and organizations looking to find their perfect fit. Key Features: Robust Data Management: Our server architecture empowers us to handle vast amounts of candidate and job data with precision, ensuring every connection is meaningful and accurate. Secure Communication: We prioritize data security and confidentiality, employing state-of-the-art encryption and security measures to protect sensitive information. Scalability: Our server setup is designed to grow with our ambitions, allowing us to expand our services and reach while maintaining top-notch performance. Real-time Matching: Through our server infrastructure, we enable real-time matching of candidates and job opportunities, fostering swift connections that drive success. As we continue to raise the bar in recruitment services, our server directory remains at the forefront of our commitment to excellence. Join us in revolutionizing the way recruitment works – where technology meets talent, and possibilities know no bounds. Explore the power of Exemplar Recruiter's server directory today, and experience recruitment like never before. Your success story begins here.",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "db": "db"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "Sarin Jaiswal - Swastik Technologies",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.3",
+    "morgan": "^1.10.0"
+  }
+}

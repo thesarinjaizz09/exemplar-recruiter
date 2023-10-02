@@ -27,17 +27,6 @@ try {
 
     // Server request routing 
 
-    app.get("/api/server/active", async (req, res) => {
-        if(req.header('serverPass') === process.env.SERVER_PASSWORD) {
-            res.status(200).json({
-                id: 1,
-                statusCode: 200,
-                message: "ER server active...",
-                clientPass: process.env.CLIENT_PASSWORD,
-            })
-        }
-    })
-
     app.listen(port, () => {
         console.log("X--- Exemplar Recruiter server succesfully running ---X");
         console.log(`X--- Exemplar Recruiter server connection key: ${connection_string} ---X`);

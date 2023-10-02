@@ -218,7 +218,7 @@ try {
         },
         _preferCountry: {
             type: String,
-            default: "uk"
+            default: "Uk, Usa, In"
         },
         _age: {
             type: Number,

@@ -12,6 +12,7 @@ try {
     dotenv.config()
     const jwt__Key = process.env.ER_JWT_KEY;
 
+   
     router.post("/register", [
         header("name", "Please provide a valid name...").isLength({ min: 3 }),
         header("email", "Please provide a valid email...").isEmail(),

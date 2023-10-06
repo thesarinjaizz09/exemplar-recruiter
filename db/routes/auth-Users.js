@@ -212,7 +212,7 @@ try {
 
                                 const payload = {
                                     credentials: {
-                                        id: user._id,
+                                        id: company._id,
                                     },
                                 };
 
@@ -299,19 +299,18 @@ try {
     router.get("/company", verifyUser, async (req, res) => {
         try {
             if (req.header('serverPass') === process.env.SERVER_PASSWORD) {
-                console.log(req.header('serverPass') === process.env.SERVER_PASSWORD)
                 const companyData = await companies.findById(req.credentials.id).select("-_password"); // Selecting all the fields except the password one from the user document
                 if (!companyData) {
                     return res.status(400).json({
                         id: 18,
                         statusCode: 400,
-                        message: 'No such user data...'
+                        message: 'No such company data...'
                     })
                 } else {
                     return res.status(200).json({
                         id: 12,
                         statusCode: 200,
-                        message: "User data fetched successfully...",
+                        message: "Company data fetched successfully...",
                         password: process.env.CLIENT_PASSWORD,
                         data: companyData
                     })

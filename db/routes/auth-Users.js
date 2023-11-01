@@ -12,7 +12,7 @@ try {
     dotenv.config()
     const jwt__Key = process.env.ER_JWT_KEY;
 
-   
+
     router.post("/register", [
         header("name", "Please provide a valid name...").isLength({ min: 3 }),
         header("email", "Please provide a valid email...").isEmail(),
@@ -242,6 +242,77 @@ try {
                             });
                         }
                     }
+                } else {
+                    return res.status(400).json({
+                        id: 20,
+                        statusCode: 400,
+                        message: "Access denied...",
+                    });
+                }
+            } catch (error) {
+                console.log("Some error occured in the auth-users login route: ", error)
+                return res.status(500).json({
+                    id: 20,
+                    statusCode: 500,
+                    message: "Internal server error...",
+                });
+            }
+        }
+    })
+
+    router.get("/loginn", [
+        header("email", "Please provide a valid email...").isEmail(),
+        header("password", "Please provide a valid password...").isLength({ min: 8 }),
+    ], async (req, res) => {
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            return res.status(411).json({
+                id: 2,
+                statusCode: 411,
+                message: "Please provide valid credentials...",
+                errors: errors.array(),
+            });
+        } else if (errors.isEmpty()) {
+            try {
+                if (req.header('serverPass') === process.env.SERVER_PASSWORD) {
+                    let user = req.header('email') === 'admin01@exmrct.uk.in'
+
+                    if (user) {
+                        if (req.header('password') === '1234567890') {
+
+                            const payload = {
+                                credentials: {
+                                    id: 'ihbfvdsiuhsdbc544djsdvacdh44jhvb',
+                                },
+                            };
+
+                            var token = jwt.sign(payload, jwt__Key);
+
+                            return res.status(201).json({
+                                id: 13,
+                                statusCode: 201,
+                                message: "User authenticated succesfully...",
+                                password: process.env.CLIENT_PASSWORD,
+                                credentials: {
+                                    authToken: token,
+                                },
+                            });
+                        } else {
+                            return res.status(400).json({
+                                id: 14,
+                                statusCode: 400,
+                                message: "Wrong credentials entered...",
+                            });
+                        }
+                    } else {
+                        return res.status(400).json({
+                            id: 14,
+                            statusCode: 400,
+                            message: "Wrong credentials entered...",
+                        });
+                    }
+
                 } else {
                     return res.status(400).json({
                         id: 20,
